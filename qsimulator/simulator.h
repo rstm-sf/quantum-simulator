@@ -43,11 +43,7 @@ public:
   Simulator(uint64_t nreg, uint64_t dim)
     : qengine::Circuit<double>(nreg, dim) {}
 
-  std::vector<qengine::CReg> get_result() {
-    for (uint64_t i = 0; i < this->nreg(); ++i)
-      this->measure(i, i);
-    return this->cregs();
-  }
+  std::vector<qengine::CReg> get_result();
 };
 
 }

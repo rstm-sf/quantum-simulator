@@ -4,16 +4,17 @@ add_subdirectory(quantum-engine)
 
 set(TARGET qsimulator)
 
-file(GLOB TARGET_SRC
-    "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/*.h"
-)
-add_executable(${TARGET} ${TARGET_SRC})
+set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
-target_compile_features(${TARGET} PUBLIC cxx_std_17)
+add_library(${TARGET} SHARED simulator.cpp)
+
+target_include_directories(${TARGET}
+    PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}
+)
 
 target_link_libraries(${TARGET}
-    PRIVATE
+    PUBLIC
         GSL
         qengine
 )
