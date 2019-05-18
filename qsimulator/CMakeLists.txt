@@ -6,11 +6,11 @@ set(TARGET qsimulator)
 
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
-add_library(${TARGET} SHARED simulator.cpp)
+add_library(${TARGET} SHARED src/simulator.cpp)
 
 target_include_directories(${TARGET}
     PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
 target_link_libraries(${TARGET}
